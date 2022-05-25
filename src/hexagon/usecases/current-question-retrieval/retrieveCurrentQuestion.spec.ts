@@ -19,10 +19,19 @@ describe('Current question retrieval', () => {
   });
 
   it('should retrieve the current question', async () => {
-    questionGateway.currentQuestion = 'Que veut dire TDD ?';
+    questionGateway.currentQuestion = {
+      id: '123abc',
+      label: 'Que veut dire un thunk ?',
+      answers: {
+        A: 'Un tank arménien',
+        B: 'Une fonction qui retourne une fonction',
+        C: 'Un type de musique',
+        D: '42'
+      }
+    };
     await store.dispatch(retrieveCurrentQuestion());
     expect(store.getState()).toEqual({
-      currentQuestion: 'Que veut dire TDD ?'
+      currentQuestion: 'Que veut dire un thunk ?'
     });
   });
 });

@@ -25,3 +25,5 @@ export const initReduxStore = (dependencies: Partial<Dependencies>) => {
 export type ReduxStore = Store<AppState> & { dispatch: ThunkDispatch<AppState, Dependencies, Action> };
 
 export type AppThunk<ReturnType = void> = ThunkAction<ReturnType, AppState, Dependencies, AnyAction>;
+
+export type AppDispatch = ThunkDispatch<AppState, Dependencies, Action>;

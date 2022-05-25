@@ -1,3 +1,5 @@
+import { Question } from '../hexagon/models/question';
+
 export interface AppState {
-  currentQuestion: string | null;
+  currentQuestion: Question | null;
 }

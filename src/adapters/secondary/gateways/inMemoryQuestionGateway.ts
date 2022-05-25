@@ -1,13 +1,14 @@
 import { QuestionGateway } from '../../../hexagon/gateways/questionGateway';
+import { Question } from '../../../hexagon/models/question';
 
 export class InMemoryQuestionGateway implements QuestionGateway {
-  private _currentQuestion: string | null = null;
+  private _currentQuestion: Question | null = null;
 
-  current(): Promise<string | null> {
+  current(): Promise<Question | null> {
     return Promise.resolve(this._currentQuestion);
   }
 
-  set currentQuestion(currentQuestion: string | null) {
+  set currentQuestion(currentQuestion: Question | null) {
     this._currentQuestion = currentQuestion;
   }
 }

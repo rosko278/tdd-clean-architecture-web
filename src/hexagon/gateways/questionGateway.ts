@@ -1,3 +1,5 @@
+import { Question } from '../models/question';
+
 export interface QuestionGateway {
-  current(): Promise<string | null>;
+  current(): Promise<Question | null>;
 }
