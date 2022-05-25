@@ -6,6 +6,7 @@ import { initReduxStore } from './store/initReduxStore';
 import { InMemoryQuestionGateway } from './adapters/secondary/gateways/inMemoryQuestionGateway';
 
 const questionGateway = new InMemoryQuestionGateway();
+questionGateway.rightAnswer = 'B';
 questionGateway.currentQuestion = {
   id: '123abc',
   label: 'Que veut dire un thunk ?',
