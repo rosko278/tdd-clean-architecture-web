@@ -14,5 +14,6 @@ describe('Palindromes extraction', () => {
     expect(extractPalindromes('Anna')).toEqual(['Anna']);
     expect(extractPalindromes('Anna mange')).toEqual(['Anna']);
     expect(extractPalindromes('Anna radar')).toEqual(['Anna', 'radar']);
+    expect(extractPalindromes("Anna m'a dit qu'elle s'est faite flashée par un radar hier")).toEqual(['Anna', 'radar']);
   });
 });
