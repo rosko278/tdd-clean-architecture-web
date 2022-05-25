@@ -4,6 +4,6 @@ export interface QuestionGateway {
   current(): Promise<Question | null>;
   validateAnswer(
     id: string,
-    givenAnswer: string
+    givenAnswer: QuestionLetter
   ): Promise<{ givenAnswer: QuestionLetter; rightAnswer: QuestionLetter }>;
 }

@@ -14,7 +14,9 @@ questionGateway.currentQuestion = {
     B: 'Une fonction qui retourne une fonction',
     C: 'Un type de musique',
     D: '42'
-  }
+  },
+  givenAnswer: null,
+  rightAnswer: null
 };
 const store = initReduxStore({ questionGateway });
 
