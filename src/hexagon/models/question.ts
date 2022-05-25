@@ -2,6 +2,10 @@ export interface Question {
   id: string;
   label: string;
   answers: Answers;
+  givenAnswer: QuestionLetter | null;
+  rightAnswer: QuestionLetter | null;
 }
 
-export type Answers = Record<'A' | 'B' | 'C' | 'D', string>;
+export type Answers = Record<QuestionLetter, string>;
+
+export type QuestionLetter = 'A' | 'B' | 'C' | 'D';
