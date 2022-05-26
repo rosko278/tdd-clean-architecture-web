@@ -14,10 +14,15 @@ describe('Joker algorithms', () => {
   });
 
   it('should remove two wrong answers randomly', () => {
-    arrayIndexGenerator.nextRandomIndex = 2;
+    arrayIndexGenerator.nextRandomIndex = 1;
     expect(removeTwoWrongAnswersAlgorithm(arrayIndexGenerator)('B')).toEqual(['B', 'C']);
-    arrayIndexGenerator.nextRandomIndex = 3;
+    arrayIndexGenerator.nextRandomIndex = 2;
     expect(removeTwoWrongAnswersAlgorithm(arrayIndexGenerator)('B')).toEqual(['B', 'D']);
+  });
+
+  it("can't remove the right answer", () => {
+    arrayIndexGenerator.nextRandomIndex = 0;
+    expect(removeTwoWrongAnswersAlgorithm(arrayIndexGenerator)('B')).toEqual(['B', 'A']);
   });
 
   const initStoreWithCurrentQuestion = () => {

@@ -6,7 +6,6 @@ import {
 } from '../../hexagon/usecases/current-question-retrieval/action';
 import { AppState } from '../appState';
 import { removedTwoWrongAnswersAction } from '../../hexagon/usecases/two-wrong-answers-removal/action';
-import { QuestionLetter } from '../../hexagon/models/question';
 
 const initialState = {
   fetching: false,
@@ -47,7 +46,7 @@ export const currentQuestionReducer = createReducer<AppState['currentQuestion']>
         ...acc,
         [q]: state.data!.answers[q]
       };
-    }, {} as Record<QuestionLetter, string>);
+    }, {});
     return {
       ...state,
       data: {

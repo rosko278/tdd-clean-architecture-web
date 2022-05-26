@@ -6,6 +6,6 @@ export interface Question {
   rightAnswer: QuestionLetter | null;
 }
 
-export type Answers = Record<QuestionLetter, string>;
+export type Answers = Partial<Record<QuestionLetter, string>>;
 
 export type QuestionLetter = 'A' | 'B' | 'C' | 'D';
