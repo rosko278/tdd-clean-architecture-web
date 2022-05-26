@@ -5,6 +5,7 @@ import {
   validatedAnswerAction
 } from '../../hexagon/usecases/current-question-retrieval/action';
 import { AppState } from '../appState';
+import { removedTwoWrongAnswersAction } from '../../hexagon/usecases/two-wrong-answers-removal/action';
 
 const initialState = {
   fetching: false,
@@ -38,5 +39,18 @@ export const currentQuestionReducer = createReducer<AppState['currentQuestion']>
         rightAnswer: payload.rightAnswer
       }
     };
+  });
+  builder.addCase(removedTwoWrongAnswersAction, (state, { payload }) => {
+    const leftAnswers: any = {};
+    payload.questionLetters.forEach(q => {
+      leftAnswers[q] = state.data!.answers[q];
+    });
+    return {
+      ...state,
+      data: {
+        ...state.data,
+        answers: leftAnswers
+      }
+    } as any;
   });
 });

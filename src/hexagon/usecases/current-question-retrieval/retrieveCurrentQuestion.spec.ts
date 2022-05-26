@@ -36,8 +36,11 @@ describe('Current question retrieval', () => {
   });
 
   it('should track the retrieval status', () => {
-    _retrieveCurrentQuestion();
-    expectCurrentQuestion(null, true);
+    return new Promise(resolve => {
+      _retrieveCurrentQuestion();
+      expectCurrentQuestion(null, true);
+      resolve('1');
+    });
   });
 
   const _retrieveCurrentQuestion = () => store.dispatch(retrieveCurrentQuestion());

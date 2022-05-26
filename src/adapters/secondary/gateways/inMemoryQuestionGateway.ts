@@ -1,5 +1,7 @@
 import { QuestionGateway } from '../../../hexagon/gateways/questionGateway';
 import { Question, QuestionLetter } from '../../../hexagon/models/question';
+import { removeTwoWrongAnswersAlgorithm } from '../joker-handling/joker-algorithms';
+import { RandomArrayIndexGenerator } from '../joker-handling/randomArrayIndexGenerator';
 
 export class InMemoryQuestionGateway implements QuestionGateway {
   private _currentQuestion: Question | null = null;
@@ -20,6 +22,10 @@ export class InMemoryQuestionGateway implements QuestionGateway {
   ): Promise<{ givenAnswer: QuestionLetter; rightAnswer: QuestionLetter }> {
     this._givenAnswer = givenAnswer;
     return Promise.resolve({ givenAnswer, rightAnswer: this._rightAnswer! });
+  }
+
+  removeTwoWrongAnswers(currentQuestion: Question): Promise<QuestionLetter[]> {
+    return Promise.resolve(removeTwoWrongAnswersAlgorithm(new RandomArrayIndexGenerator())(this._rightAnswer!));
   }
 
   set currentQuestion(currentQuestion: Question | null) {

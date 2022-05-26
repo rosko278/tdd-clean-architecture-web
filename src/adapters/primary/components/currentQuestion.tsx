@@ -5,6 +5,7 @@ import { useEffect } from 'react';
 import { retrieveCurrentQuestion } from '../../../hexagon/usecases/current-question-retrieval/retrieveCurrentQuestion';
 import { AppDispatch } from '../../../store/initReduxStore';
 import { AppState } from '../../../store/appState';
+import { Joker5050 } from './joker5050';
 
 export const CurrentQuestion = () => {
   const dispatch: AppDispatch = useDispatch<AppDispatch>();
@@ -22,10 +23,15 @@ export const CurrentQuestion = () => {
     <div>
       <div className="flex flex-row justify-center">
         {data && (
-          <div className="flex flex-col w-9/12">
-            <QuestionTitle title={data.label} />
-            <PossibleAnswers answers={data.answers} />
-          </div>
+          <>
+            <div className="flex flex-col w-9/12">
+              <QuestionTitle title={data.label} />
+              <PossibleAnswers answers={data.answers} />
+            </div>
+            <div>
+              <Joker5050 />
+            </div>
+          </>
         )}
       </div>
     </div>
