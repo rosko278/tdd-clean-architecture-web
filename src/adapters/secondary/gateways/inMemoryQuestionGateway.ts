@@ -7,7 +7,11 @@ export class InMemoryQuestionGateway implements QuestionGateway {
   private _givenAnswer: QuestionLetter | null = null;
 
   current(): Promise<Question | null> {
-    return Promise.resolve(this._currentQuestion);
+    return new Promise(resolve => {
+      setTimeout(() => {
+        resolve(this._currentQuestion);
+      }, 5000);
+    });
   }
 
   validateAnswer(

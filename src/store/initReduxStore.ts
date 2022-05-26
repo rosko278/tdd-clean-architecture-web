@@ -1,7 +1,7 @@
 import { Action, AnyAction, configureStore, Store, ThunkAction, ThunkDispatch } from '@reduxjs/toolkit';
 import { AppState } from './appState';
-import { currentQuestionReducer } from '../hexagon/usecases/current-question-retrieval/reducers/currentQuestion.reducer';
 import { QuestionGateway } from '../hexagon/gateways/questionGateway';
+import { currentQuestionReducer } from './reducers/currentQuestion.reducer';
 
 interface Dependencies {
   questionGateway: QuestionGateway;

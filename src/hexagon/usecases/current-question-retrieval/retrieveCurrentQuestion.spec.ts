@@ -35,10 +35,18 @@ describe('Current question retrieval', () => {
     expectCurrentQuestion(currentQuestion);
   });
 
+  it('should track the retrieval status', () => {
+    _retrieveCurrentQuestion();
+    expectCurrentQuestion(null, true);
+  });
+
   const _retrieveCurrentQuestion = () => store.dispatch(retrieveCurrentQuestion());
 
-  const expectCurrentQuestion = (expectedCurrentQuestion: Question | null) =>
+  const expectCurrentQuestion = (expectedCurrentQuestion: Question | null, fetching: boolean = false) =>
     expect(store.getState()).toEqual({
-      currentQuestion: expectedCurrentQuestion
+      currentQuestion: {
+        fetching,
+        data: expectedCurrentQuestion
+      }
     });
 });

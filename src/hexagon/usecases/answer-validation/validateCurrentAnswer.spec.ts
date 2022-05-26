@@ -1,7 +1,7 @@
 import { initReduxStore, ReduxStore } from '../../../store/initReduxStore';
-import { retrievedCurrentQuestionAction } from '../current-question-retrieval/reducers/currentQuestion.reducer';
 import { validateCurrentAnswer } from './validateCurrentAnswer';
 import { InMemoryQuestionGateway } from '../../../adapters/secondary/gateways/inMemoryQuestionGateway';
+import { retrievedCurrentQuestionAction } from '../current-question-retrieval/action';
 
 describe('Answer validation', () => {
   let store: ReduxStore;
@@ -30,9 +30,8 @@ describe('Answer validation', () => {
     await store.dispatch(validateCurrentAnswer('A'));
     expect(store.getState()).toEqual({
       currentQuestion: {
-        ...currentQuestion,
-        givenAnswer: 'A',
-        rightAnswer: 'B'
+        fetching: false,
+        data: { ...currentQuestion, givenAnswer: 'A', rightAnswer: 'B' }
       }
     });
     expect(questionGateway.givenAnswer).toEqual('A');

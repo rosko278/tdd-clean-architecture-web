@@ -7,10 +7,11 @@ export const selectCurrentAnswersStatuses = (state: AppState) => {
     C: 'NOT_HIGHLIGHTED',
     D: 'NOT_HIGHLIGHTED'
   };
-  if (!state.currentQuestion?.givenAnswer || !state.currentQuestion?.rightAnswer) return defaultAnswersStatuses;
+  if (!state.currentQuestion.data?.givenAnswer || !state.currentQuestion.data?.rightAnswer)
+    return defaultAnswersStatuses;
   return {
     ...defaultAnswersStatuses,
-    [state.currentQuestion?.givenAnswer]: 'ORANGE_HIGHLIGHTED',
-    [state.currentQuestion?.rightAnswer]: 'GREEN_HIGHLIGHTED'
+    [state.currentQuestion.data?.givenAnswer]: 'ORANGE_HIGHLIGHTED',
+    [state.currentQuestion.data?.rightAnswer]: 'GREEN_HIGHLIGHTED'
   };
 };

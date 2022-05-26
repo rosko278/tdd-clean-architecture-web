@@ -3,7 +3,7 @@ import { initReduxStore, ReduxStore } from '../../../store/initReduxStore';
 import {
   retrievedCurrentQuestionAction,
   validatedAnswerAction
-} from '../../../hexagon/usecases/current-question-retrieval/reducers/currentQuestion.reducer';
+} from '../../../hexagon/usecases/current-question-retrieval/action';
 
 describe('View model generators through Redux selectors', () => {
   let store: ReduxStore;

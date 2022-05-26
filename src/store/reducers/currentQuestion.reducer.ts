@@ -1,0 +1,42 @@
+import { createReducer } from '@reduxjs/toolkit';
+import {
+  retrieveCurrentQuestionAction,
+  retrievedCurrentQuestionAction,
+  validatedAnswerAction
+} from '../../hexagon/usecases/current-question-retrieval/action';
+import { AppState } from '../appState';
+
+const initialState = {
+  fetching: false,
+  data: null
+};
+
+export const currentQuestionReducer = createReducer<AppState['currentQuestion']>(initialState, builder => {
+  builder.addCase(retrieveCurrentQuestionAction, state => {
+    return {
+      ...state,
+      fetching: true
+    };
+  });
+  builder.addCase(retrievedCurrentQuestionAction, (state, { payload }) => {
+    return {
+      data: payload.currentQuestion,
+      fetching: false
+    };
+  });
+  builder.addCase(validatedAnswerAction, (state, { payload }) => {
+    if (!state.data)
+      return {
+        fetching: false,
+        data: null
+      };
+    return {
+      ...state,
+      data: {
+        ...state.data,
+        givenAnswer: payload.givenAnswer,
+        rightAnswer: payload.rightAnswer
+      }
+    };
+  });
+});

@@ -1,5 +1,8 @@
 import { Question } from '../hexagon/models/question';
 
 export interface AppState {
-  currentQuestion: Question | null;
+  currentQuestion: {
+    fetching: boolean;
+    data: Question | null;
+  };
 }
