@@ -7,5 +7,5 @@ export const removeTwoWrongAnswersAlgorithm =
     const questionLetters: QuestionLetter[] = ['A', 'B', 'C', 'D'];
     const candidateWrongAnswers = questionLetters.filter(q => q !== rightAnswer);
     const randomWrongAnswerIndex = arrayIndexGenerator.randomIndex(candidateWrongAnswers);
-    return [rightAnswer, questionLetters[randomWrongAnswerIndex]];
+    return [rightAnswer, candidateWrongAnswers[randomWrongAnswerIndex]];
   };

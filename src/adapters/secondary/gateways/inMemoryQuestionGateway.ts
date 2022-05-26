@@ -12,7 +12,7 @@ export class InMemoryQuestionGateway implements QuestionGateway {
     return new Promise(resolve => {
       setTimeout(() => {
         resolve(this._currentQuestion);
-      }, 5000);
+      }, 1000);
     });
   }
 
